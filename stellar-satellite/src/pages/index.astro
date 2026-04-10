@@ -1,11 +1,86 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const peliculas = [
+  {
+    titulo: "Interstellar",
+    genero: "Sci-fi",
+    imagen: "https://via.placeholder.com/200"
+  },
+  {
+    titulo: "Titanic",
+    genero: "Romance",
+    imagen: "https://via.placeholder.com/200"
+  },
+  {
+    titulo: "Batman",
+    genero: "Acción",
+    imagen: "https://via.placeholder.com/200"
+  },
+  {
+    titulo: "Inception",
+    genero: "Ciencia ficción",
+    imagen: "https://via.placeholder.com/200"
+  }
+];
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Catálogo de películas</title>
+    <link rel="stylesheet" href="/src/styles/global.css">
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <header>
+      <h1>🎬 Catálogo de películas</h1>
+    </header>
+
+    <main>
+
+      <!-- SECCIÓN 1: BUSCADOR -->
+      <section>
+        <h2>Buscar películas</h2>
+        <input type="text" id="buscador" placeholder="Buscar..." />
+      </section>
+
+      <!-- SECCIÓN 2: CATÁLOGO -->
+      <section>
+        <h2>Catálogo</h2>
+
+        <div id="catalogo">
+          {peliculas.map(peli => (
+            <article class="card">
+              <img src={peli.imagen} alt={peli.titulo} />
+              <h3>{peli.titulo}</h3>
+              <p>{peli.genero}</p>
+            </article>
+          ))}
+        </div>
+
+
+    </main>
+
+    <!-- JAVASCRIPT -->
+    <script>
+      const buscador = document.getElementById("buscador");
+      const cards = document.querySelectorAll(".card");
+
+      buscador.addEventListener("input", () => {
+        const texto = buscador.value.toLowerCase();
+
+        cards.forEach(card => {
+          const titulo = card.querySelector("h3").textContent.toLowerCase();
+
+          if (titulo.includes(texto)) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    </script>
+
+  </body>
+</html>
