@@ -1,23 +1,31 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #111;
-    color:  rgb(240, 239, 243);
+    background: linear-gradient(135deg, #141e30, #243b55);
+      color:  rgb(240, 239, 243);
   }
   
   header {
-    background-color: #222;
-    padding: 20px;
+    padding: 30px;
     text-align: center;
-  }
+    background: rgba(0, 0, 0, 0.5); 
+     backdrop-filter: blur(5px);     
+    }
+  
   
   section {
     padding: 20px;
   }
   
   input {
-    padding: 10px;
+    padding: 10px 15px;
     width: 200px;
+    background: #111;        
+    color: white;
+    border: none;            
+    border-radius: 20px;
+    outline: none;
+    transition: 0.3s;
   }
   
   #catalogo {
